@@ -20,11 +20,11 @@ end
 
 function love.update(dt)
    x = math.random(50, width-100)
-	y = math.random(50, height-100)
+   y = math.random(50, height-100)
    for k,v in pairs(particles) do
-		table.remove(v) 
+      table.remove(v) 
       table.insert(system, ParticleSystem:create(Vector:create(particles[k].location.x, particles[k].location.y), 50)) 
-	end
+   end
 end
 
 function love.draw()
