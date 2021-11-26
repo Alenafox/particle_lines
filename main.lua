@@ -6,7 +6,7 @@ function love.load()
    height = love.graphics.getHeight()
 
    particles = {}
-   systems = {}
+   system = {}
 
 	j = math.random(10, 15);
 
@@ -14,7 +14,7 @@ function love.load()
 		x = math.random(50, width-100)
 		y = math.random(50, height-100)
 		particles[i] = Particle:create(Vector:create(x, y), 50)
-		systems[i] = ParticleSystem:create(Vector:create(x, y), 50)
+		--system[i] = ParticleSystem:create(Vector:create(x, y), 50)
 	end
 end
 
@@ -23,7 +23,7 @@ function love.update(dt)
 	y = math.random(50, height-100)
    for k,v in pairs(particles) do
 		table.remove(v) 
-      --table.insert(particles, Particle:create(Vector:create(x, y), 50)) 
+      table.insert(system, ParticleSystem:create(Vector:create(particles[k].location.x, particles[k].location.y), 50)) 
 	end
 end
 
@@ -37,7 +37,7 @@ function love.mousepressed(x, y, button, istouch)
    if button == 1 then 
       for k,v in pairs(particles) do
          if math.abs(particles[k].location.x - x) < 15 and math.abs(particles[k].location.y - y) < 15 then
-            systems[k].isPressed = true
+            --system[k].isPressed = true
             particles[k].location.x = -50
             particles[k].location.y = -50
          end
